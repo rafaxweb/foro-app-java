@@ -14,24 +14,64 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "forum")
-public class Thread {
+@Table
+public class ThreadForum {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idThread;
-		
+
 	@Column
 	private String title;
-	
+
 	@Column
 	private Date Date;
-	
+
 	@ManyToOne
-	@JoinColumn(name="idUser", nullable=false)
+	@JoinColumn(name = "idUser", nullable = false)
 	private User user;
-		
+
 	@Column
 	@OneToMany(mappedBy = "thread")
 	private List<Post> posts;
+
+	public long getIdThread() {
+		return idThread;
+	}
+
+	public void setIdThread(long idThread) {
+		this.idThread = idThread;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Date getDate() {
+		return Date;
+	}
+
+	public void setDate(Date date) {
+		Date = date;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
 }
