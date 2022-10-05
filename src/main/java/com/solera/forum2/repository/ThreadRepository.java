@@ -1,5 +1,7 @@
 package com.solera.forum2.repository;
 
-public interface ThreadRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ThreadRepository extends JpaRepository<Thread, Integer>{
 
 }
