@@ -23,11 +23,41 @@ public class Post {
 	private String description;
 	
 	@Column
-	private Date date;
+	private String category;
+	
+	@Column
+	private String image;
 
+	@Column
+	private boolean isPublic;
+	
 	@ManyToOne
 	@JoinColumn(name="User", nullable=false)
 	private ThreadForum thread;
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public boolean isPublic() {
+		return isPublic;
+	}
+
+	public void setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+	}
 
 	public long getIdPost() {
 		return idPost;
@@ -43,14 +73,6 @@ public class Post {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public ThreadForum getThread() {
