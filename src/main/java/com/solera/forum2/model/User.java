@@ -31,10 +31,6 @@ public class User {
 	
 	@Column
 	private String profile_image;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "user")
-	private List<ThreadForum> threads;
 
 	public long getId() {
 		return id;
@@ -74,14 +70,6 @@ public class User {
 
 	public void setProfileImage(String profileImage) {
 		this.profile_image = profileImage;
-	}
-
-	public List<ThreadForum> getThreads() {
-		return threads;
-	}
-
-	public void setThreads(List<ThreadForum> threads) {
-		this.threads = threads;
 	}
 	
 }

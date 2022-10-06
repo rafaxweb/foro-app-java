@@ -29,10 +29,6 @@ public class ThreadForum {
 	@Column
 	private Date Date;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user", nullable = false)
-	private User user;
-
 	@JsonIgnore
 	@OneToMany(mappedBy = "thread")
 	private List<Post> posts;
@@ -59,14 +55,6 @@ public class ThreadForum {
 
 	public void setDate(Date date) {
 		Date = date;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public List<Post> getPosts() {

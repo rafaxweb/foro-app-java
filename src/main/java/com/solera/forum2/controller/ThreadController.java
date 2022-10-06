@@ -32,13 +32,5 @@ public class ThreadController {
 		System.out.println(thread.getTitle());
 	}
 	
-	@GetMapping("posts")
-	public void retrievePosts() {
-		
-	}
-	
-	@GetMapping("posts/new")
-	public void createNewPosts(@RequestBody Post post) {
-		
-	}
+
 }
