@@ -15,12 +15,11 @@ public class UserService {
 	private UserRepository userRepository;
 	
 	@Transactional
-	public String getOneUserByUsername(Long id) {
+	public String getOneUserByUsername(String username) {
 		
-		Optional<User> user = userRepository.findById(id);
+		User user = userRepository.findUserByUsername(username);
 		
-		System.out.println(user.get().getUsername());
-		return user.get().getUsername();
+		return user.getPassword();
 		
 	}
 	
