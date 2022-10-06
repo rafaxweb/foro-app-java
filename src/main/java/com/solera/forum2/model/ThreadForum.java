@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class ThreadForum {
@@ -28,10 +30,10 @@ public class ThreadForum {
 	private Date Date;
 
 	@ManyToOne
-	@JoinColumn(name = "idUser", nullable = false)
+	@JoinColumn(name = "id_user", nullable = false)
 	private User user;
 
-	@Column
+	@JsonIgnore
 	@OneToMany(mappedBy = "thread")
 	private List<Post> posts;
 

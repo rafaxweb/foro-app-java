@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table
 public class User {
@@ -28,8 +30,9 @@ public class User {
 	private String email;
 	
 	@Column
-	private String profileImage;
+	private String profile_image;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<ThreadForum> threads;
 
@@ -66,11 +69,11 @@ public class User {
 	}
 
 	public String getProfileImage() {
-		return profileImage;
+		return profile_image;
 	}
 
 	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
+		this.profile_image = profileImage;
 	}
 
 	public List<ThreadForum> getThreads() {

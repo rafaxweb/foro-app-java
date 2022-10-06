@@ -17,7 +17,11 @@ public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idPost;
+	private long id_post;
+	
+	@ManyToOne
+	@JoinColumn(name="idThread", nullable=false)
+	private ThreadForum thread;
 		
 	@Column
 	private String description;
@@ -30,10 +34,6 @@ public class Post {
 
 	@Column
 	private boolean isPublic;
-	
-	@ManyToOne
-	@JoinColumn(name="User", nullable=false)
-	private ThreadForum thread;
 	
 	public String getCategory() {
 		return category;
@@ -60,11 +60,11 @@ public class Post {
 	}
 
 	public long getIdPost() {
-		return idPost;
+		return id_post;
 	}
 
 	public void setIdPost(long idPost) {
-		this.idPost = idPost;
+		this.id_post = idPost;
 	}
 
 	public String getDescription() {
