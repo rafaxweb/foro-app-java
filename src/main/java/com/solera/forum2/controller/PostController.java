@@ -27,7 +27,7 @@ public class PostController {
 	}
 
 	@GetMapping("/get/{id}")
-	public Optional<Post> retrievePosts(@PathVariable long id) {
+	public Optional<Post> retrievePosts(@PathVariable Long id) {
 		return postService.getOnePostsById(id);
 	}
 	
