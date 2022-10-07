@@ -33,6 +33,11 @@ public class PostController {
 		return postService.getOnePostsById(id);
 	}
 	
+	@GetMapping("/getPosts/{idThread}")
+	public List<Post> retrievePostsByIdThread(@PathVariable Long idThread) {
+		return postService.getPostsByIdThread(idThread);
+	}
+	
 	@PostMapping("/new")
 	public void createNewPosts(@RequestBody Post post) {
 		postService.createNewPost(post);

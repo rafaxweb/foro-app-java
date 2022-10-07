@@ -1,5 +1,6 @@
 package com.solera.forum2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,22 @@ public class PostService {
 	@Transactional
 	public Optional<Post> getOnePostsById(long id) {
 		return postRepo.findById(id);
+	}
+	
+	@Transactional
+	public List<Post> getPostsByIdThread(long id) {
+		
+		List<Post> allPosts = postRepo.findAll();
+		List<Post> allPostsId = new ArrayList<>();
+		
+		for(int i=0; i<allPosts.size(); i++) {
+			if(allPosts.get(i).getThread().getIdThread() == id) {
+				allPostsId.add(allPosts.get(i));
+			}
+		}
+		
+		System.out.println(allPostsId);
+		return allPostsId;
 	}
 	
 	@Transactional
