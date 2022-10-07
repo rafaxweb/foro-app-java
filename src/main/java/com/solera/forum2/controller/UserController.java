@@ -18,7 +18,7 @@ public class UserController {
 	UserService userService;
 	
 	@GetMapping("/password/{username}")
-	public String retrieveUserUsername(@PathVariable String username) {
+	public String retrieveUserPassword(@PathVariable String username) {
 		return userService.getOneUserByUsername(username);
 	}
 	
