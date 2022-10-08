@@ -1,6 +1,5 @@
 package com.solera.forum2.model;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -23,9 +22,9 @@ public class ThreadForum {
 
 	@Column
 	private String title;
-
+	
 	@Column
-	private Date Date;
+	private String image;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "thread")
@@ -47,19 +46,19 @@ public class ThreadForum {
 		this.title = title;
 	}
 
-	public Date getDate() {
-		return Date;
-	}
-
-	public void setDate(Date date) {
-		Date = date;
-	}
-
 	public List<Post> getPosts() {
 		return posts;
 	}
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }
