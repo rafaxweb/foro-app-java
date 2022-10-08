@@ -15,7 +15,7 @@ import com.solera.forum2.service.ThreadService;
 
 @CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
 @RestController
-@RequestMapping("/thread")
+@RequestMapping("/threads")
 public class ThreadController {
 
 	@Autowired

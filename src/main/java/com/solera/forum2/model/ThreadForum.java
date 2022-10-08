@@ -29,6 +29,9 @@ public class ThreadForum {
 	@JsonIgnore
 	@OneToMany(mappedBy = "thread")
 	private List<Post> posts;
+	
+	@Column
+	private Integer postsNumber;
 
 	public long getIdThread() {
 		return idThread;
@@ -60,5 +63,13 @@ public class ThreadForum {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Integer getPostsNumber() {
+		return postsNumber;
+	}
+
+	public void setPostsNumber(Integer postsNumber) {
+		this.postsNumber = postsNumber;
 	}
 }

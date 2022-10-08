@@ -1,5 +1,6 @@
 package com.solera.forum2.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,13 @@ public class ThreadService {
 	
 	public List<ThreadForum> listAllThreads() 
 	{
-		return threadRepository.findAll();
+		List<ThreadForum> threads= threadRepository.findAll();
+		
+		List<ThreadForum> finalThreads = new ArrayList<>();
+		for (ThreadForum thread: threads) {
+			thread.setPostsNumber(thread.getPosts().size());
+			finalThreads.add(thread);
+		}
+		return finalThreads;
 	}
 }
