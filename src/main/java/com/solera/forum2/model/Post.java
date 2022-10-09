@@ -20,7 +20,10 @@ public class Post {
 	@ManyToOne
 	@JoinColumn(name="idThread", nullable=false)
 	private ThreadForum thread;
-		
+	
+	@Column
+	private String title;
+	
 	@Column
 	private String description;
 	
