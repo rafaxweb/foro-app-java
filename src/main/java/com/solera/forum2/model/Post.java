@@ -15,7 +15,7 @@ public class Post {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id_post;
+	private long idPost;
 	
 	@ManyToOne
 	@JoinColumn(name="idThread", nullable=false)
@@ -61,11 +61,11 @@ public class Post {
 	}
 
 	public long getIdPost() {
-		return id_post;
+		return idPost;
 	}
 
 	public void setIdPost(long idPost) {
-		this.id_post = idPost;
+		this.idPost = idPost;
 	}
 
 	public String getDescription() {
@@ -82,5 +82,13 @@ public class Post {
 
 	public void setThread(ThreadForum thread) {
 		this.thread = thread;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 }
