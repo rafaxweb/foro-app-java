@@ -3,6 +3,8 @@ package com.solera.forum2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +22,7 @@ public class BannedWordsController {
 	BannedWordsService bannedWordsService;
 	
 	@GetMapping("/get")
-	public List<BannedWords> retrieveBannedWords() {
-		return bannedWordsService.findAllBannedWords();
+	public ResponseEntity<List<BannedWords>> retrieveBannedWords() {
+		return new ResponseEntity<List<BannedWords>>(bannedWordsService.findAllBannedWords(), HttpStatus.ACCEPTED);
 	}
 }

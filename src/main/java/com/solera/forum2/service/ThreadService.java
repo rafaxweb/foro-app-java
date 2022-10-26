@@ -26,4 +26,8 @@ public class ThreadService {
 		}
 		return finalThreads;
 	}
+	
+	public ThreadForum saveNewThread(ThreadForum thread) {
+		return threadRepository.save(thread);
+	}
 }

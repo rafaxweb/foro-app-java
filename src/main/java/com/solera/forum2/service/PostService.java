@@ -46,7 +46,7 @@ public class PostService {
 	}
 	
 	@Transactional
-	public void createNewPost(Post post) {
-		postRepo.save(post);
+	public Post createNewPost(Post post) {
+		return postRepo.save(post);
 	}
 }

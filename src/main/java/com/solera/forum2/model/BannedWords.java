@@ -18,6 +18,14 @@ public class BannedWords {
 	@Column
 	String word;
 
+	public BannedWords() {
+	}
+	
+	public BannedWords(Long id, String word) {
+		this.id = id;
+		this.word = word;
+	}
+
 	public long getId() {
 		return id;
 	}

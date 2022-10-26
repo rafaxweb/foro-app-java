@@ -3,6 +3,8 @@ package com.solera.forum2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,13 +24,13 @@ public class ThreadController {
 	private ThreadService threadService;
 	
 	@GetMapping("/list")
-	public List<ThreadForum> retrieveThreads() {
-		return threadService.listAllThreads();
+	public ResponseEntity<List<ThreadForum>> retrieveThreads() {
+		return new ResponseEntity<List<ThreadForum>>(threadService.listAllThreads(), HttpStatus.FOUND);
 	}
 	
 	@PostMapping("/new")
-	public void createNewThread(@RequestBody ThreadForum thread) {
-		System.out.println(thread.getTitle());
+	public ResponseEntity<ThreadForum> createNewThread(@RequestBody ThreadForum thread) {
+		return new ResponseEntity<ThreadForum>(threadService.saveNewThread(thread), HttpStatus.CREATED);
 	}
 	
 

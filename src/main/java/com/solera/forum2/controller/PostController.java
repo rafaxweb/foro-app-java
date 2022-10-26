@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,22 +26,28 @@ public class PostController {
 	PostService postService;
 	
 	@GetMapping("/get")
-	public List<Post> retrievePosts() {
-		return postService.getAllPosts();
+	public ResponseEntity<List<Post>> retrievePosts() {
+		return new ResponseEntity<List<Post>>(postService.getAllPosts(), HttpStatus.ACCEPTED);
 	}
 
 	@GetMapping("/get/{id}")
-	public Optional<Post> retrievePosts(@PathVariable Long id) {
-		return postService.getOnePostsById(id);
+	public ResponseEntity<Optional<Post>> retrievePosts(@PathVariable Long id) {
+		Optional<Post> post = postService.getOnePostsById(id);
+		if (post.isEmpty()) {
+			return new ResponseEntity<Optional<Post>>(postService.getOnePostsById(id), HttpStatus.NOT_FOUND);
+		
+		} else {			
+			return new ResponseEntity<Optional<Post>>(postService.getOnePostsById(id), HttpStatus.FOUND);
+		}
 	}
 	
 	@GetMapping("/getPosts/{idThread}")
-	public List<Post> retrievePostsByIdThread(@PathVariable Long idThread) {
-		return postService.getPostsByIdThread(idThread);
+	public ResponseEntity<List<Post>> retrievePostsByIdThread(@PathVariable Long idThread) {
+		return new ResponseEntity<List<Post>>(postService.getPostsByIdThread(idThread), HttpStatus.FOUND);
 	}
 	
 	@PostMapping("/new")
-	public void createNewPosts(@RequestBody Post post) {
-		postService.createNewPost(post);
+	public ResponseEntity<Post> createNewPosts(@RequestBody Post post) {
+		return new ResponseEntity<Post>(postService.createNewPost(post), HttpStatus.CREATED);
 	}
 }
